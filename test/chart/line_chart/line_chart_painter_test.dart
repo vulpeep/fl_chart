@@ -1,9 +1,10 @@
 import 'dart:math' as math;
-import 'dart:ui';
 import 'dart:ui' as ui show Gradient;
+import 'dart:ui';
 
 import 'package:fl_chart/fl_chart.dart';
 import 'package:fl_chart/src/chart/base/base_chart/base_chart_painter.dart';
+import 'package:fl_chart/src/chart/base/base_chart/fl_box_border.dart';
 import 'package:fl_chart/src/chart/line_chart/line_chart_helper.dart';
 import 'package:fl_chart/src/chart/line_chart/line_chart_painter.dart';
 import 'package:fl_chart/src/extensions/path_extension.dart';
@@ -2395,7 +2396,7 @@ void main() {
 
       final tooltipData = LineTouchTooltipData(
         getTooltipColor: (touchedSpot) => const Color(0x11111111),
-        tooltipRoundedRadius: 12,
+        tooltipRadius: BorderRadius.circular(12),
         rotateAngle: 43,
         maxContentWidth: 100,
         tooltipMargin: 12,
@@ -2407,7 +2408,7 @@ void main() {
               .map((e) => LineTooltipItem(e.barIndex.toString(), textStyle1))
               .toList();
         },
-        tooltipBorder: const BorderSide(color: Color(0x11111111), width: 2),
+        tooltipBorder: const FlBoxBorder(color: Color(0x11111111), width: 2),
       );
       final data = LineChartData(
         minY: 0,
@@ -2506,7 +2507,7 @@ void main() {
 
       final tooltipData = LineTouchTooltipData(
         getTooltipColor: (touchedSpot) => const Color(0x11111111),
-        tooltipRoundedRadius: 12,
+        tooltipRadius: BorderRadius.circular(12),
         rotateAngle: 43,
         maxContentWidth: 100,
         tooltipMargin: 12,
@@ -2518,7 +2519,7 @@ void main() {
               .map((e) => LineTooltipItem(e.barIndex.toString(), textStyle1))
               .toList();
         },
-        tooltipBorder: const BorderSide(color: Color(0x11111111), width: 2),
+        tooltipBorder: const FlBoxBorder(color: Color(0x11111111), width: 2),
       );
       final data = LineChartData(
         minY: 0,
@@ -2617,7 +2618,7 @@ void main() {
 
       final tooltipData = LineTouchTooltipData(
         getTooltipColor: (touchedSpot) => const Color(0x11111111),
-        tooltipRoundedRadius: 12,
+        tooltipRadius: BorderRadius.circular(12),
         rotateAngle: 43,
         maxContentWidth: 100,
         tooltipMargin: 12,
@@ -2629,7 +2630,7 @@ void main() {
               .map((e) => LineTooltipItem(e.barIndex.toString(), textStyle1))
               .toList();
         },
-        tooltipBorder: const BorderSide(color: Color(0x11111111), width: 2),
+        tooltipBorder: const FlBoxBorder(color: Color(0x11111111), width: 2),
       );
       final data = LineChartData(
         minY: 0,

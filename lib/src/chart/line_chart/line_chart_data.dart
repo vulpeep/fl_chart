@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:equatable/equatable.dart';
 import 'package:fl_chart/fl_chart.dart';
+import 'package:fl_chart/src/chart/base/base_chart/fl_box_border.dart';
 import 'package:fl_chart/src/extensions/color_extension.dart';
 import 'package:fl_chart/src/extensions/gradient_extension.dart';
 import 'package:fl_chart/src/utils/lerp.dart';
@@ -1034,7 +1035,7 @@ class LineTouchTooltipData with EquatableMixin {
   /// [LineChart] shows a tooltip popup on top of spots automatically when touch happens,
   /// otherwise you can show it manually using [LineChartData.showingTooltipIndicators].
   /// Tooltip shows on top of spots, with [getTooltipColor] as a background color,
-  /// and you can set corner radius using [tooltipRoundedRadius].
+  /// and you can set corner radius using [tooltipRadius].
   /// If you want to have a padding inside the tooltip, fill [tooltipPadding],
   /// or If you want to have a bottom margin, set [tooltipMargin].
   /// Content of the tooltip will provide using [getTooltipItems] callback, you can override it
@@ -1044,7 +1045,7 @@ class LineTouchTooltipData with EquatableMixin {
   /// you can set [fitInsideHorizontally] true to force it to shift inside the chart horizontally,
   /// also you can set [fitInsideVertically] true to force it to shift inside the chart vertically.
   const LineTouchTooltipData({
-    this.tooltipRoundedRadius = 4,
+    this.tooltipRadius = BorderRadius.zero,
     this.tooltipPadding =
         const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
     this.tooltipMargin = 16,
@@ -1057,11 +1058,11 @@ class LineTouchTooltipData with EquatableMixin {
     this.fitInsideVertically = false,
     this.showOnTopOfTheChartBoxArea = false,
     this.rotateAngle = 0.0,
-    this.tooltipBorder = BorderSide.none,
+    this.tooltipBorder,
   });
 
   /// Sets a rounded radius for the tooltip.
-  final double tooltipRoundedRadius;
+  final BorderRadius tooltipRadius;
 
   /// Applies a padding for showing contents inside the tooltip.
   final EdgeInsets tooltipPadding;
@@ -1094,7 +1095,7 @@ class LineTouchTooltipData with EquatableMixin {
   final double rotateAngle;
 
   /// The tooltip border color.
-  final BorderSide tooltipBorder;
+  final FlBoxBorder? tooltipBorder;
 
   // /// Retrieves data for setting background color of the tooltip.
   final GetLineTooltipColor getTooltipColor;
@@ -1102,7 +1103,7 @@ class LineTouchTooltipData with EquatableMixin {
   /// Used for equality check, see [EquatableMixin].
   @override
   List<Object?> get props => [
-        tooltipRoundedRadius,
+        tooltipRadius,
         tooltipPadding,
         tooltipMargin,
         tooltipHorizontalAlignment,

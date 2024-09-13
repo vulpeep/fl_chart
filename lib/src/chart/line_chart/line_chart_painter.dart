@@ -1117,13 +1117,13 @@ class LineChartPainter extends AxisChartPainter<LineChartData> {
       }
     }
 
-    final radius = Radius.circular(tooltipData.tooltipRoundedRadius);
+    final radius = tooltipData.tooltipRadius;
     final roundedRect = RRect.fromRectAndCorners(
       rect,
-      topLeft: radius,
-      topRight: radius,
-      bottomLeft: radius,
-      bottomRight: radius,
+      topLeft: radius.topLeft,
+      topRight: radius.topRight,
+      bottomLeft: radius.bottomLeft,
+      bottomRight: radius.bottomRight,
     );
 
     var topSpot = showingTooltipSpots.showingSpots[0];
@@ -1143,10 +1143,11 @@ class LineChartPainter extends AxisChartPainter<LineChartData> {
     final textRotationOffset =
         Utils().calculateRotationOffset(rect.size, rotateAngle);
 
-    if (tooltipData.tooltipBorder != BorderSide.none) {
+    if (tooltipData.tooltipBorder != null) {
       _borderTouchTooltipPaint
-        ..color = tooltipData.tooltipBorder.color
-        ..strokeWidth = tooltipData.tooltipBorder.width;
+        ..color = tooltipData.tooltipBorder!.color
+        ..shader = tooltipData.tooltipBorder!.gradient?.createShader(rect)
+        ..strokeWidth = tooltipData.tooltipBorder!.width;
     }
 
     canvasWrapper.drawRotated(
