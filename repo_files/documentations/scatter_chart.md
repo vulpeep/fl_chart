@@ -8,13 +8,13 @@ ScatterChart(
   ScatterChartData(
     // read about it in the ScatterChartData section
   ),
-  swapAnimationDuration: Duration(milliseconds: 150), // Optional
-  swapAnimationCurve: Curves.linear, // Optional
+  duration: Duration(milliseconds: 150), // Optional
+  curve: Curves.linear, // Optional
 );
 ```
 
 ### Implicit Animations
-When you change the chart's state, it animates to the new state internally (using [implicit animations](https://flutter.dev/docs/development/ui/animations/implicit-animations)). You can control the animation [duration](https://api.flutter.dev/flutter/dart-core/Duration-class.html) and [curve](https://api.flutter.dev/flutter/animation/Curves-class.html) using optional `swapAnimationDuration` and `swapAnimationCurve` properties, respectively.
+When you change the chart's state, it animates to the new state internally (using [implicit animations](https://flutter.dev/docs/development/ui/animations/implicit-animations)). You can control the animation [duration](https://api.flutter.dev/flutter/dart-core/Duration-class.html) and [curve](https://api.flutter.dev/flutter/animation/Curves-class.html) using optional `duration` and `curve` properties, respectively.
 
 ### ScatterChartData
 |PropName		|Description	|default value|
@@ -24,8 +24,8 @@ When you change the chart's state, it animates to the new state internally (usin
 |axisTitleData| check the [FlAxisTitleData](base_chart.md#FlAxisTitleData)| FlAxisTitleData()|
 |scatterTouchData| [ScatterTouchData](#scattertouchdata-read-about-touch-handling) holds the touch interactivity details| ScatterTouchData()|
 |showingTooltipIndicators| indices of showing tooltip, The point is that you need to disable touches to show these tooltips manually|[]|
-
-
+|rotationQuarterTurns|Rotates the chart 90 degrees (clockwise) in every quarter turns. This feature works like the [RotatedBox](https://api.flutter.dev/flutter/widgets/RotatedBox-class.html) widget|0|
+|errorIndicatorData|Holds data for representing an error indicator (you see the error indicators if you provide the `xError` or `yError` in the [ScatterSpot](#ScatterSpot))|[ErrorIndicatorData()](base_chart.md#FlErrorIndicatorData)|
 
 ### ScatterSpot
 |PropName		|Description	|default value|
@@ -33,6 +33,9 @@ When you change the chart's state, it animates to the new state internally (usin
 |show| determines to show or hide the spot|true|
 |radius| radius of the showing spot| [8]
 |color| colors of the spot|// a color based on the values|
+|renderPriority| sort by this to manage overlap|0|
+|xError| Determines the error range of the data point using (FlErrorRange)[base_chart.md#FlErrorRange] (which ontains `lowerBy` and `upperValue`) for the x-axis|null|
+|yError| Determines the error range of the data point using (FlErrorRange)[base_chart.md#FlErrorRange] (which ontains `upperBy` and `upperValue`) for the y-axis|null|
 
 
 ### ScatterTouchData ([read about touch handling](handle_touches.md))
